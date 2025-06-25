@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
 	title: 'SEA Catering',
@@ -14,8 +16,13 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			data-theme="light">
-			<body className={`relative antialiased`}>{children}</body>
+			data-theme="dark">
+			<body
+				className={`bg-accent text-primary-content relative antialiased`}>
+				<Nav />
+				{children}
+				<Footer />
+			</body>
 		</html>
 	);
 }

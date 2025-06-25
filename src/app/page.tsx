@@ -1,7 +1,6 @@
-import Footer from '@/components/Footer';
-import Card from '@/components/Homepage/Card';
-import Hero from '@/components/Homepage/Hero';
-import Nav from '@/components/Nav';
+import Card from '@/components/homepage/Card';
+import Hero from '@/components/homepage/Hero';
+import Testimonial from '@/components/homepage/Testimonial';
 
 export default function Home() {
 	const cards = [
@@ -15,7 +14,7 @@ export default function Home() {
 			src: '/img/homepage/cards/2.jpg',
 			title: 'Delivery to Major Cities / Nationwide',
 			content:
-				'Kami antarkan makanan sehat langsung ke depan pintu Anda, di mana pun Anda berada. Jaringan kami menjangkau seluruh kota besar di Indonesia dan sekitarnya.',
+				'Take control of your intake with confidence. Each of our meals comes with an accurate and clear breakdown of calories and macronutrients (protein, carbs, fat).',
 		},
 		{
 			src: '/img/homepage/cards/3.png',
@@ -27,12 +26,13 @@ export default function Home() {
 
 	return (
 		<>
-			<Nav />
 			<Hero />
-			<section className="p-10 bg-primary dark:bg-accent text-center">
+
+			{/* About */}
+			<section className="p-5 sm:p-10 text-center">
 				<div className="flex basis-full justify-center mb-5">
 					<div className="sm:basis-3/4 lg:basis-1/2">
-						<h5 className="text-xl font-bold mb-3">
+						<h5 className="text-xl md:text-2xl font-bold mb-3">
 							Welcome to SEA Catering, Indonesia&apos;s first
 							truly customizable healthy meal service.
 						</h5>
@@ -45,7 +45,7 @@ export default function Home() {
 						</p>
 					</div>
 				</div>
-				<div className="grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-4">
+				<div className="grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-6">
 					{cards.map((card, index) => (
 						<Card
 							src={card.src}
@@ -58,7 +58,8 @@ export default function Home() {
 				</div>
 			</section>
 
-			<Footer />
+			{/* Testimoni */}
+			<Testimonial />
 		</>
 	);
 }
