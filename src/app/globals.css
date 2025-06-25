@@ -45,6 +45,7 @@
 	name: 'dark';
 	--color-primary: oklch(52.7% 0.154 150.069);
 	--color-primary-content: oklch(98.5% 0 0);
-	--color-secondary: oklch(62.7% 0.194 149.214);
-	--color-secondary-content: oklch(52.7% 0.154 150.069);
+	--color-secondary: oklch(88% 0.02 290);
+	--color-secondary-content: oklch(35% 0.15 290);
+	--color-accent: oklch(37.3% 0.034 259.733);
 }

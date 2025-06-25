@@ -1,8 +1,9 @@
+import { toRupiah } from '@/app/utils';
 import Link from 'next/link';
 
 interface Props {
 	title: string;
-	price: string;
+	price: number;
 	isPopular: boolean;
 	desc: string;
 	details: string[];
@@ -29,12 +30,11 @@ export default function PricingCard({
 						{title}
 					</h2>
 					<div className="text-xl flex sm:flex-col items-center sm: basis-2/5 md:basis-1/4">
-						<span className="sm:w-full">
-							<span className="text-sm mr-1">IDR</span>
-							{price}
+						<span className="sm:w-full text-sm sm:text-base">
+							{toRupiah(price)}
 						</span>
 						<span className="sm:w-full text-xs ml-1 md:ml-0">
-							/ week (5 days, 2 meals/day)
+							/meal
 						</span>
 					</div>
 				</div>

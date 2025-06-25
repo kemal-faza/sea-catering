@@ -1,6 +1,6 @@
 const Footer = () => {
 	return (
-		<footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10">
+		<footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10 absolute bottom-0 right-0 left-0">
 			<aside>
 				<p>
 					Brian - Manager

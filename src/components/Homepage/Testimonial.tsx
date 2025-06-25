@@ -86,7 +86,9 @@ export default function Testimonial() {
 						Your feedback helps us grow and inspires others to eat
 						healthier.
 					</p>
-					<div className="flex flex-col items-center gap-3 my-5">
+					<form
+						action=""
+						className="flex flex-col items-center gap-3 my-5">
 						<input
 							type="text"
 							placeholder="Your name"
@@ -120,7 +122,6 @@ export default function Testimonial() {
 									name="rating-11"
 									className="mask mask-star-2 mask-half-1 bg-primary-content"
 									aria-label="1.5 star"
-									defaultChecked
 								/>
 								<input
 									type="radio"
@@ -157,6 +158,7 @@ export default function Testimonial() {
 									name="rating-11"
 									className="mask mask-star-2 mask-half-1 bg-primary-content"
 									aria-label="4.5 star"
+									defaultChecked
 								/>
 								<input
 									type="radio"
@@ -171,7 +173,7 @@ export default function Testimonial() {
 							className="btn btn-primary w-full mt-3">
 							Submit
 						</button>
-					</div>
+					</form>
 				</div>
 			</div>
 		</section>

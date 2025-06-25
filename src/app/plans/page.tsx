@@ -3,41 +3,44 @@ import PricingCard from '@/components/plans/PricingCard';
 export default function MealPlans() {
 	const plans = [
 		{
-			title: 'Signature Balanced Bowl',
+			title: 'Diet Plan',
+			isPopular: false,
+			price: 30000,
+			desc: "Our Diet Plan is the perfect starting point for your health journey. Each meal is carefully portioned and calorie-controlled to help you manage your weight and feel great without sacrificing flavor. It's the ideal choice for balanced, everyday nutrition that's both effective and affordable.",
+			details: [
+				'Calorie-controlled portions (approx. 400-500 kcal).',
+				'Balanced macronutrients for stable energy.',
+				'Fresh, high-quality local ingredients.',
+				'Best for everyday health maintenance, sustainable weight management, and anyone new to healthy eating.',
+			],
+		},
+		{
+			title: 'Protein Plan',
 			isPopular: true,
-			price: '600,000',
-			desc: 'The perfect choice for active individuals who need balanced energy throughout the day. Designed to maintain optimal productivity and health without the hassle of meal planning.',
+			price: 40000,
+			desc: 'Designed to fuel your active lifestyle, the Protein Plan is packed with an extra serving of high-quality protein to help you build muscle, recover faster, and enhance your workout performance. This is the go-to option for athletes and fitness enthusiasts who demand more from their meals.',
 			details: [
-				'~1200 - 1500 kcal (for 2 meals)',
-				'Balanced (40% Carbohydrates, 30% Protein, 30% Healthy Fats)',
-				'Best for office professionals, students, or anyone looking to start a practical and healthy lifestyle.',
+				'High-protein servings (approx. 30-40g per meal).',
+				'Complex carbohydrates for sustained energy.',
+				'A focus on lean meats, fish, and powerful plant-based proteins.',
+				'Best for gym-goers, athletes, and individuals focused on muscle building or post-workout recovery.',
 			],
 		},
 		{
-			title: 'Weight Loss Journey',
+			title: 'Royal Plan',
 			isPopular: false,
-			price: '580,000',
-			desc: 'A scientifically designed, low-calorie meal plan to help you achieve your ideal body weight. Every dish is rich in fiber and nutrients to keep you feeling full and energized.',
+			price: 60000,
+			desc: 'Experience the ultimate in healthy gourmet dining with our Royal Plan. This premium selection features exclusive, chef-crafted menus using only the finest ingredients like imported salmon, tenderloin steak, and organic produce. For those who want unparalleled taste, variety, and nutritional excellence, the Royal Plan is in a class of its own.',
 			details: [
-				'~1000 - 1200 kcal (for 2 meals)',
-				'Low Carb, Low Fat, High in Protein & Fiber.',
-				'Best for individuals with a specific goal to lose weight in a healthy and sustainable way.',
-			],
-		},
-		{
-			title: "Athlete's Fuel",
-			isPopular: false,
-			price: '750,000',
-			desc: 'Boost your workout performance and accelerate muscle growth with our high-protein menu. Specially designed for athletes and those who are serious about their fitness.',
-			details: [
-				'~1800 - 2200 kcal (for 2 meals)',
-				'High Protein (45% Protein, 35% Carbohydrates, 20% Fat).',
-				'Best for gym enthusiasts, athletes, or anyone on a muscle-building or bulking program.',
+				'Gourmet recipes and exclusive weekly menus.',
+				'Use of premium ingredients (e.g., Salmon, Steak, Quinoa, Organic Greens).',
+				'Maximum variety and our most extensive customization options.',
+				'Best for food enthusiasts and those who want the absolute best in quality, taste, and ingredient variety.',
 			],
 		},
 	];
 	return (
-		<section className="p-10 bg-accent">
+		<section className="p-5 lg:p-10 bg-accent">
 			<h1 className="text-center font-bold text-5xl mb-10">
 				Menu Plans For You
 			</h1>
