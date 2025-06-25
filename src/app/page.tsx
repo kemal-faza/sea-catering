@@ -1,103 +1,64 @@
-import Image from "next/image";
+import Footer from '@/components/Footer';
+import Card from '@/components/Homepage/Card';
+import Hero from '@/components/Homepage/Hero';
+import Nav from '@/components/Nav';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+	const cards = [
+		{
+			src: '/img/homepage/cards/1.png',
+			title: 'Customize Your Meal',
+			content:
+				'Design your own healthy menu. Customize ingredients and portions to support various dietary needs-from keto, vegan, to your specific fitness goals.',
+		},
+		{
+			src: '/img/homepage/cards/2.jpg',
+			title: 'Delivery to Major Cities / Nationwide',
+			content:
+				'Kami antarkan makanan sehat langsung ke depan pintu Anda, di mana pun Anda berada. Jaringan kami menjangkau seluruh kota besar di Indonesia dan sekitarnya.',
+		},
+		{
+			src: '/img/homepage/cards/3.png',
+			title: 'Detailed Nutritional Information',
+			content:
+				'Take control of your intake with confidence. Each of our meals comes with an accurate and clear breakdown of calories and macronutrients (protein, carbs, fat).',
+		},
+	];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	return (
+		<>
+			<Nav />
+			<Hero />
+			<section className="p-10 bg-primary dark:bg-accent text-center">
+				<div className="flex basis-full justify-center mb-5">
+					<div className="sm:basis-3/4 lg:basis-1/2">
+						<h5 className="text-xl font-bold mb-3">
+							Welcome to SEA Catering, Indonesia&apos;s first
+							truly customizable healthy meal service.
+						</h5>
+						<p>
+							Forget one-size-fits-all diets. Here, you design the
+							meals that fit your lifestyle, and we deliver them
+							fresh to your door—no matter where you live in the
+							archipelago. Healthy eating has never been this easy
+							or accessible.
+						</p>
+					</div>
+				</div>
+				<div className="grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-4">
+					{cards.map((card, index) => (
+						<Card
+							src={card.src}
+							alt={card.title}
+							key={index}>
+							<h2 className="card-title">{card.title}</h2>
+							<p>{card.content}</p>
+						</Card>
+					))}
+				</div>
+			</section>
+
+			<Footer />
+		</>
+	);
 }
