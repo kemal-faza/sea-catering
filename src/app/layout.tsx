@@ -16,7 +16,7 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			data-theme="dark">
+			data-theme="light">
 			<body
 				className={`bg-accent text-primary-content relative antialiased min-h-screen pb-56`}>
 				<Nav />
