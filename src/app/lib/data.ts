@@ -1,4 +1,4 @@
-const mealTypes = ['Breakfast', 'Lunch', 'Dinner'];
+const mealPlans = ['Breakfast', 'Lunch', 'Dinner'];
 const days = [
 	'Monday',
 	'Tuesday',
@@ -30,4 +30,4 @@ const cardsHomepage = [
 	},
 ];
 
-export { mealTypes, days, cardsHomepage };
+export { mealPlans, days, cardsHomepage };

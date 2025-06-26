@@ -9,3 +9,8 @@ export async function getAllData(table: string) {
 	if (error) console.log(error);
 	else return data;
 }
+
+export async function insertData(table: string, data: object) {
+	const { error } = await supabase.from(table).insert(data);
+	if (error) console.log(error);
+}

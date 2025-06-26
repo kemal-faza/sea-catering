@@ -1,26 +1,42 @@
 'use client';
-import { days, mealTypes } from '@/app/lib/data';
+import { handleSubscriptionForm } from '@/app/lib/action';
+import { days, mealPlans } from '@/app/lib/data';
 import { toRupiah } from '@/app/lib/utils';
-import { useState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import ToastSuccess from '../toast/ToastGreen';
 
 export default function Form({ children }: { children: React.ReactNode }) {
-	const [mealPlan, setMealPlan] = useState(0);
-	function handleMealPlanChange(value: string) {
-		setMealPlan(Number(value));
+	const [state, formAction, isPending] = useActionState(
+		handleSubscriptionForm,
+		null,
+	);
+
+	useEffect(() => {
+		if (state) {
+			toast.custom(<ToastSuccess message={state.message} />, {
+				duration: 4000,
+			});
+		}
+	}, [state]);
+
+	const [menuPlan, setMenuPlan] = useState(0);
+	function handleMenuPlanChange(value: string) {
+		setMenuPlan(Number(value));
 	}
 
-	const [mealType, setMealType] = useState(['']);
-	const [totalMealType, setTotalMealType] = useState(0);
-	function handleMealTypeChange(value: string, isChecked: boolean) {
+	const [mealPlan, setMealPlan] = useState(['']);
+	const [totalMealPlan, setTotalMealPlan] = useState(0);
+	function handleMealPlanChange(value: string, isChecked: boolean) {
 		if (isChecked) {
-			setMealType([...mealType, value]);
-			setTotalMealType(totalMealType + 1);
+			setMealPlan([...mealPlan, value]);
+			setTotalMealPlan(totalMealPlan + 1);
 		} else {
-			const index = mealType.indexOf(value);
+			const index = mealPlan.indexOf(value);
 			if (index !== -1) {
-				const tempMealType = mealType.toSpliced(index, 1);
-				setMealType([...tempMealType]);
-				setTotalMealType(totalMealType - 1);
+				const tempMealPlan = mealPlan.toSpliced(index, 1);
+				setMealPlan([...tempMealPlan]);
+				setTotalMealPlan(totalMealPlan - 1);
 			}
 		}
 	}
@@ -41,25 +57,48 @@ export default function Form({ children }: { children: React.ReactNode }) {
 		}
 	}
 
+	const [total, setTotal] = useState(0);
+	useEffect(() => {
+		setTotal(menuPlan * totalMealPlan * totalDeliveryDays * 4.3);
+	}, [totalMealPlan, totalDeliveryDays, menuPlan]);
+
 	return (
 		<form
-			action=""
+			action={formAction}
 			className="basis-full sm:basis-4/5 md:basis-3/5 lg:basis-2/5 flex flex-col gap-4">
+			<input
+				type="hidden"
+				name="meal_plans"
+				value={mealPlan.slice(1)}
+			/>
+			<input
+				type="hidden"
+				name="delivery_days"
+				value={deliveryDays.slice(1)}
+			/>
+			<input
+				type="hidden"
+				name="total_price"
+				value={total}
+			/>
 			<input
 				type="text"
 				placeholder="Your name"
+				name="name"
 				className="input rounded-full w-full"
 			/>
 			<input
 				type="text"
 				placeholder="Your phone number"
+				name="phone_number"
 				className="input rounded-full w-full"
 			/>
 			<select
 				defaultValue="Select your plan"
 				className="select w-full rounded-full"
+				name="menu_plan"
 				onChange={(e) => {
-					handleMealPlanChange(e.target.value);
+					handleMenuPlanChange(e.target.value);
 				}}>
 				<option disabled={true}>Select your plan</option>
 				{children}
@@ -68,14 +107,14 @@ export default function Form({ children }: { children: React.ReactNode }) {
 				<legend className="fieldset-legend">
 					Choose your meal plan
 				</legend>
-				{mealTypes.map((type, index) => (
+				{mealPlans.map((type, index) => (
 					<label
 						className="label"
 						key={index}
 						id={type}>
 						<input
 							onChange={(e) => {
-								handleMealTypeChange(
+								handleMealPlanChange(
 									e.target.value,
 									e.target.checked,
 								);
@@ -83,7 +122,6 @@ export default function Form({ children }: { children: React.ReactNode }) {
 							value={type}
 							type="checkbox"
 							className="checkbox"
-							name="meal-plan"
 							id={type}
 						/>
 						{type}
@@ -102,7 +140,6 @@ export default function Form({ children }: { children: React.ReactNode }) {
 						<input
 							type="checkbox"
 							className="checkbox"
-							name="meal-plan"
 							value={day}
 							onChange={(e) => {
 								handleDeliveryDaysChange(
@@ -118,19 +155,17 @@ export default function Form({ children }: { children: React.ReactNode }) {
 			</fieldset>
 			<textarea
 				className="textarea rounded-xl w-full"
+				name="allergies"
 				placeholder="Are you have any allergies? Just tell us."></textarea>
+
 			<div className="flex justify-between">
 				<span>Total:</span>
-				<span>
-					{toRupiah(
-						mealPlan * totalMealType * totalDeliveryDays * 4.3,
-					)}
-				</span>
+				<span>{toRupiah(total)}</span>
 			</div>
 			<button
 				type="submit"
 				className="btn btn-primary w-full mt-3">
-				Submit
+				{isPending ? 'Submitting...' : 'Submit'}
 			</button>
 		</form>
 	);

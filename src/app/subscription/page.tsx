@@ -15,7 +15,7 @@ export default async function Subscription() {
 						<option
 							value={plan.price}
 							key={index}>
-							Diet Plan - {toRupiah(plan.price)}/meal
+							{plan.name} - {toRupiah(plan.price)}/meal
 						</option>
 					))}
 				</Form>

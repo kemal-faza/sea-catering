@@ -3,10 +3,10 @@ import Hero from '@/components/homepage/Hero';
 import Testimonial from '@/components/homepage/Testimonial';
 import { cardsHomepage } from './lib/data';
 import { getTestimonials } from './lib/action';
-import Swiper from '@/components/homepage/Swiper';
 
 export default async function Home() {
 	const testimonials = await getTestimonials();
+
 	return (
 		<>
 			<Hero />
@@ -42,14 +42,7 @@ export default async function Home() {
 			</section>
 
 			{/* Testimoni */}
-			<Testimonial>
-				{testimonials.map((testimonial, index) => (
-					<Swiper
-						testimonial={testimonial}
-						key={index}
-					/>
-				))}
-			</Testimonial>
+			<Testimonial testimonials={testimonials} />
 		</>
 	);
 }
