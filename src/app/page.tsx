@@ -1,29 +1,12 @@
 import Card from '@/components/homepage/Card';
 import Hero from '@/components/homepage/Hero';
 import Testimonial from '@/components/homepage/Testimonial';
+import { cardsHomepage } from './lib/data';
+import { getTestimonials } from './lib/action';
+import Swiper from '@/components/homepage/Swiper';
 
-export default function Home() {
-	const cards = [
-		{
-			src: '/img/homepage/cards/1.png',
-			title: 'Customize Your Meal',
-			content:
-				'Design your own healthy menu. Customize ingredients and portions to support various dietary needs-from keto, vegan, to your specific fitness goals.',
-		},
-		{
-			src: '/img/homepage/cards/2.jpg',
-			title: 'Delivery to Major Cities / Nationwide',
-			content:
-				'Take control of your intake with confidence. Each of our meals comes with an accurate and clear breakdown of calories and macronutrients (protein, carbs, fat).',
-		},
-		{
-			src: '/img/homepage/cards/3.png',
-			title: 'Detailed Nutritional Information',
-			content:
-				'Take control of your intake with confidence. Each of our meals comes with an accurate and clear breakdown of calories and macronutrients (protein, carbs, fat).',
-		},
-	];
-
+export default async function Home() {
+	const testimonials = await getTestimonials();
 	return (
 		<>
 			<Hero />
@@ -46,7 +29,7 @@ export default function Home() {
 					</div>
 				</div>
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 justify-center gap-6">
-					{cards.map((card, index) => (
+					{cardsHomepage.map((card, index) => (
 						<Card
 							src={card.src}
 							alt={card.title}
@@ -59,7 +42,14 @@ export default function Home() {
 			</section>
 
 			{/* Testimoni */}
-			<Testimonial />
+			<Testimonial>
+				{testimonials.map((testimonial, index) => (
+					<Swiper
+						testimonial={testimonial}
+						key={index}
+					/>
+				))}
+			</Testimonial>
 		</>
 	);
 }

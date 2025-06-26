@@ -1,4 +1,4 @@
-import { toRupiah } from '@/app/utils';
+import { toRupiah } from '@/app/lib/utils';
 import Link from 'next/link';
 
 interface Props {

@@ -1,19 +1,9 @@
 'use client';
-import { toRupiah } from '@/app/utils';
+import { days, mealTypes } from '@/app/lib/data';
+import { toRupiah } from '@/app/lib/utils';
 import { useState } from 'react';
 
-export default function Form() {
-	const mealTypes = ['Breakfast', 'Lunch', 'Dinner'];
-	const days = [
-		'Monday',
-		'Tuesday',
-		'Wednesday',
-		'Thursday',
-		'Friday',
-		'Saturday',
-		'Sunday',
-	];
-
+export default function Form({ children }: { children: React.ReactNode }) {
 	const [mealPlan, setMealPlan] = useState(0);
 	function handleMealPlanChange(value: string) {
 		setMealPlan(Number(value));
@@ -72,9 +62,7 @@ export default function Form() {
 					handleMealPlanChange(e.target.value);
 				}}>
 				<option disabled={true}>Select your plan</option>
-				<option value={30000}>Diet Plan - IDR 30.000/meal</option>
-				<option value={40000}>Protein Plan - IDR 40.000/meal</option>
-				<option value={60000}>Royal Plan - IDR 60.000/meal</option>
+				{children}
 			</select>
 			<fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-full border p-4">
 				<legend className="fieldset-legend">

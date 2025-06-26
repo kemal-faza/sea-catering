@@ -1,43 +1,15 @@
 'use client';
 import { Autoplay, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-export default function Testimonial() {
-	const reviews = [
-		{
-			name: 'Aditya Pratama',
-			message:
-				"As a developer with a hectic schedule, SEA Catering is an absolute lifesaver. I have no time to cook but refuse to eat junk food. My lunch is always delivered on time to the office, it tastes great, and most importantly, it doesn't leave me feeling sluggish! My energy is stable all day. Highly recommended!",
-			rating: '5',
-		},
-		{
-			name: 'Rina Wijayanti',
-			message:
-				"I am very particular about my macro intake. The customization feature at SEA Catering is incredible! I can adjust my protein and carb portions to match my training program perfectly. It has significantly helped my progress at the gym. The food isn't bland like other diet foods either. Finally, a healthy catering service that understands athletes' needs.",
-			rating: '4.5',
-		},
-		{
-			name: 'Bunga Lestari',
-			message:
-				"Ensuring my family eats healthy is a priority, but sometimes there just isn't enough time. Since subscribing to SEA Catering, dinner has become so much easier. The kids love it, and my husband does too. It tastes like home-cooked food, but we have peace of mind knowing it's nutritionally balanced with fresh ingredients. The service is also friendly and always on time.",
-			rating: '4.5',
-		},
-		{
-			name: 'David Santoso',
-			message:
-				"I tried the 'Weight Loss Journey' plan for a month, and the results were amazing. I lost 5 kg without feeling tortured or constantly hungry. The portions were just right, the menu was different every day so I never got bored, and it was still delicious. The transparent calorie information was a huge help in keeping me on track. Thank you, SEA Catering",
-			rating: '4.5',
-		},
-		{
-			name: 'Amanda Putri',
-			message:
-				"Finding a vegan catering service that's both delicious and creative can be tough. The 'Green Goodness' plan from SEA Catering exceeded all my expectations. The menu is never boring, and there's always a new, pleasant surprise each week. I can finally enjoy practical, healthy, and super tasty plant-based meals. Kudos to the chef's creativity!",
-			rating: '5',
-		},
-	];
+export default function Testimonial({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	return (
 		<section className="p-5 sm:p-10 text-center">
 			<Swiper
@@ -60,22 +32,7 @@ export default function Testimonial() {
 				}}
 				modules={[Pagination, Autoplay]}
 				className="mySwiper">
-				{reviews.map((review, index) => (
-					<SwiperSlide
-						className="mb-10"
-						key={index}
-						data-swiper-autoplay="2000">
-						<div className="card bg-base-100 w-full shadow-sm">
-							<div className="card-body text-center items-center">
-								<h2 className="card-title">{review.name}</h2>
-								<p>{review.message}</p>
-								<span className="font-bold">
-									{review.rating}/5
-								</span>
-							</div>
-						</div>
-					</SwiperSlide>
-				))}
+				{children}
 			</Swiper>
 			<div className="mt-5 flex justify-center">
 				<div className="md:basis-2/5">
