@@ -17,7 +17,8 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			data-theme="light">
+			data-theme="light"
+			className="scroll-smooth">
 			<body
 				className={`bg-accent text-primary-content relative antialiased min-h-screen pb-80 sm:pb-56`}>
 				<Nav />

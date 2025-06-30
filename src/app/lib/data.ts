@@ -30,4 +30,23 @@ const cardsHomepage = [
 	},
 ];
 
-export { mealPlans, days, cardsHomepage };
+const links = [
+	{
+		href: '/',
+		text: 'Home',
+	},
+	{
+		href: '/plans',
+		text: 'Meal Plans',
+	},
+	{
+		href: '/subscription',
+		text: 'Subscription',
+	},
+	{
+		href: '#contact',
+		text: 'Contact Us',
+	},
+];
+
+export { mealPlans, days, cardsHomepage, links };

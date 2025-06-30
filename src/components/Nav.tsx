@@ -1,28 +1,11 @@
 'use client';
+import { links } from '@/app/lib/data';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const Nav = () => {
 	const path = usePathname();
-	const links = [
-		{
-			href: '/',
-			text: 'Home',
-		},
-		{
-			href: '/plans',
-			text: 'Meal Plans',
-		},
-		{
-			href: '/subscription',
-			text: 'Subscription',
-		},
-		{
-			href: '/contact',
-			text: 'Contact Us',
-		},
-	];
 	return (
 		<nav className="navbar bg-primary text-primary-content shadow-sm sticky top-0 z-10">
 			<div className="navbar-start">
